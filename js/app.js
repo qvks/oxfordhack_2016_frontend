@@ -10,4 +10,12 @@ function getURL(){
     pos = document.getElementById("pos").value;
     console.log(URL);
     console.log(pos);
+    FB.api(
+      '/MajorLeagueHacking/photos/uploaded',
+      'GET',
+      {},
+      function(response) {
+          console.log(response)
+      }
+    );
 }
