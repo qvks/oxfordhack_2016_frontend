@@ -9,43 +9,68 @@
 </head>
 
 <body>
-    <script src="js/app.js"></script>
-    <script>
-      window.fbAsyncInit = function() {
+<script src="js/app.js"></script>
+<script>
+    window.fbAsyncInit = function() {
         FB.init({
-          appId      : '1151594398249523',
-          xfbml      : true,
-          version    : 'v2.8'
+            appId      : '1151594398249523',
+            xfbml      : true,
+            version    : 'v2.8'
         });
+
         FB.AppEvents.logPageView();
-      };
+        FB.getLoginStatus(function(response) {
+            if (response.status === 'connected') {
+                console.log('Logged in.');
+                FB.api(
+                        '/1283053661745309/photos?fields=link,name,images',
+                        function(response) {
+                            response.data.forEach(function(element){
+                                console.log(element.images[0]);
+                            });
+                            if (response && !response.error) {
+                                console.log(response)
+                            } else {
+                                console.log("nothing");
+                            }
+                        }
+                );
+            }
+            else {
+                console.log("not logged in");
+                FB.login();
+            }
+        });
+    };
 
-      (function(d, s, id){
-         var js, fjs = d.getElementsByTagName(s)[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement(s); js.id = id;
-         js.src = "//connect.facebook.net/en_US/sdk.js";
-         fjs.parentNode.insertBefore(js, fjs);
-       }(document, 'script', 'facebook-jssdk'));
-    </script>
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
 
-    <header>
-        <nav class="navbar navbar-default">
+
+</script>
+
+<header>
+    <nav class="navbar navbar-default">
         <div class="navbar-header">
             <a href="#" class="navbar-brand">Heck!</a>
         </div>
-        </nav>
-    </header>
+    </nav>
+</header>
 
-    <div class="welcome">
-        <h1>Welcome! Let's get started!</h1>
-    </div>
+<div class="welcome">
+    <h1>Welcome! Let's get started!</h1>
+</div>
 
 
-    <form onsubmit="getURL()">
-        <div class="form-area">
-            <div class="form-group">
-                <label for="url">Folder link:</label>
+<form onsubmit="getURL()">
+    <div class="form-area">
+        <div class="form-group">
+            <label for="url">Folder link:</label>
                 <input type="text" class="form-control" placeholder="Insert URL here..." id="url">
             </div>
             <div class="form-group">
