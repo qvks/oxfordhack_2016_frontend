@@ -1,16 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
+
 <head>
     <meta charset="UTF-8" />
     <title>Heck! (Dem Emo)</title>
-    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css"/>
 </head>
 
 <body>
 <script src="js/app.js"></script>
+<script
+        src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
 <script>
+
+    var imgData;
+
     window.fbAsyncInit = function() {
         FB.init({
             appId      : '1151594398249523',
@@ -26,6 +42,7 @@
                         '/1283053661745309/photos?fields=link,name,images',
                         function(response) {
                             if (response && !response.error) {
+                                imgData = response.data;
                                 response.data.forEach(function(element){
                                     console.log(element.images[0].source);
                                 });
@@ -42,6 +59,8 @@
         });
     };
 
+
+
     (function(d, s, id){
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) {return;}
@@ -49,6 +68,21 @@
         js.src = "https://connect.facebook.net/en_US/sdk.js";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
+
+
+    $.ajax({
+        url: 'http://oxfordhack.mishrabhinav.com/analyze',
+        dataType: 'json',
+        type: 'post',
+        contentType: 'application/json',
+        data: imgData,
+        success: function (data, textStatus, jQxhr) {
+            console.log(data);
+        },
+        error: function (jqXhr, textStatus, errorThrown) {
+            console.log(errorThrown);
+        }
+    })
 
 
 </script>
