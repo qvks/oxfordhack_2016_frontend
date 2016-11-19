@@ -37,3 +37,15 @@
     margin: auto;
     display: block;
 }
+
+#viewDiv {
+    float: left;
+    width: 50%;
+    height: 100%;
+}
+
+#formDiv {
+    float: left;
+    width: 50%;
+    height: 100%
+}
