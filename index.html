@@ -25,11 +25,10 @@
                 FB.api(
                         '/1283053661745309/photos?fields=link,name,images',
                         function(response) {
-                            response.data.forEach(function(element){
-                                console.log(element.images[0]);
-                            });
                             if (response && !response.error) {
-                                console.log(response)
+                                response.data.forEach(function(element){
+                                    console.log(element.images[0].source);
+                                });
                             } else {
                                 console.log("nothing");
                             }
