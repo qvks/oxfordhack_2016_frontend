@@ -7,13 +7,10 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
     <style>
         html, body, #viewDiv {
-            padding: 0;
-            margin: 0;
             height: 100%;
-            width: 100%;
         }
     </style>
-    <link rel="stylesheet" href="https://js.arcgis.com/4.1/esri/css/main.css">
+
     <script src="https://js.arcgis.com/4.1/"></script>
     <script>
         require([
@@ -25,13 +22,15 @@
                 basemap: "streets"
             });
             var view = new MapView({
-                container: "viewDiv",  // Reference to the scene div created in step 5
-                map: map,  // Reference to the map object created before the scene
-                zoom: 4,  // Sets the zoom level based on level of detail (LOD)
+                container: "viewDiv",  // Reference to the scene div
+                map: map,  // Reference to the map object
+                zoom: 5,  // Sets the zoom level based on level of detail (LOD)
                 center: [15, 65]  // Sets the center point of view in lon/lat
             });
         });
     </script>
+
+    <link rel="stylesheet" href="https://js.arcgis.com/4.1/esri/css/main.css">
     <link rel="stylesheet" href="css/bootstrap.css"/>
     <link rel="stylesheet" href="css/style.css"/>
 </head>
@@ -69,10 +68,10 @@
         <h1>Welcome! Let's get started!</h1>
     </div>
 
-    <div id="viewDiv"></div>
+    <div class="col-xs-6" id="viewDiv"></div>
 
     <form onsubmit="getURL()">
-        <div class="form-area" id="formDiv">
+        <div class="form-area col-xs-6" id="formDiv">
             <div class="form-group">
                 <label for="url">Folder link:</label>
                 <input type="text" class="form-control" placeholder="Insert URL here..." id="url">

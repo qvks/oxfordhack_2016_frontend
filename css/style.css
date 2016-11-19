@@ -39,13 +39,19 @@
 }
 
 #viewDiv {
+    /*
     float: left;
+    padding: 0;
+    margin: 0;
     width: 50%;
     height: 100%;
+    */
 }
 
 #formDiv {
+/*
     float: left;
     width: 50%;
     height: 100%
+*/
 }
