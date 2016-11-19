@@ -3,11 +3,11 @@
  */
 
 var URL;
-var location;
+var pos;
 
 function getURL(){
-    URL = document.getElementById("usr").value;
-    location = document.getElementById("pos").value;
+    URL = document.getElementById("url").value;
+    pos = document.getElementById("pos").value;
     console.log(URL);
-    console.log(location);
+    console.log(pos);
 }
